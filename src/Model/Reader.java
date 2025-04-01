@@ -33,5 +33,10 @@ public class Reader extends Person {
                 .ifPresent(System.out::println);
     }
 
-
+    public void purchaseBook(String bookID) {
+        books.stream()
+                .filter(book -> book.getBookId().equals(bookID))
+                .findFirst()
+                .ifPresent(book -> {book.setStatus(BookStatus.SOLD);});
+    }
 }
