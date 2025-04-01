@@ -26,11 +26,12 @@ public class Reader extends Person {
         });
     }
 
-    public void showBooks(String bookID) {
+    public void showBook(String bookID) {
         books.stream()
                 .filter(book -> book.getBookId().equals(bookID))
                 .findFirst()
                 .ifPresent(System.out::println);
     }
+
 
 }
