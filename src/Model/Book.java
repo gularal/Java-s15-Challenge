@@ -1,24 +1,24 @@
 package Model;
 
-import java.time.LocalDateTime;
-
 public class Book {
-    public LocalDateTime getDateOfPurchase() {
-        return dateOfPurchase;
-    }
+    private int bookID;
+    private String author;
+    private String name;
+    private double price;
+    private BookStatus status;
+    private String edition;
+    private String dateOfPurchase;
 
-    public void setDateOfPurchase(LocalDateTime dateOfPurchase) {
+
+    public Book(int bookID, String author, String name, double price, BookStatus status, String edition, String dateOfPurchase) {
+        this.bookID = bookID;
+        this.author = author;
+        this.name = name;
+        this.price = price;
+        this.status = status;
+        this.edition = edition;
         this.dateOfPurchase = dateOfPurchase;
     }
-
-    public String getEdition() {
-        return edition;
-    }
-
-    public void setEdition(String edition) {
-        this.edition = edition;
-    }
-
     public BookStatus getStatus() {
         return status;
     }
@@ -27,68 +27,43 @@ public class Book {
         this.status = status;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getName() {
+    public String getTitle() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
-    }
-
-    private String bookId;
-    private String title;
-    private Author author;
-    private String name;
-    private int price;
-    private BookStatus status;
-    private String edition;
-    private LocalDateTime dateOfPurchase;
-
-    public Book(String bookId, String title, Author author, LocalDateTime dateOfPurchase) {
-        this.bookId = bookId;
-        this.title = title;
-        this.author = author;
-        this.dateOfPurchase = dateOfPurchase;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Author getAuthor() {
+    public String getAuthor() {
         return author;
     }
-    public void changeOwner(String newOwner){
-        System.out.println("Kitabın sahibi " +title + " olarak değiştirildi. " +newOwner );
+
+    public int getBookID() {
+        return bookID;
     }
+
+    public void setBookID(int bookID) {
+        this.bookID = bookID;
+    }
+
+
+    public void changeOwner() {
+        // Sahip değiştirme mantığı burada
+    }
+
+    public String getOwner() {
+        // Sahibi döndürme mantığı burada
+        return ""; // Geçici olarak boş döndürülüyor
+    }
+
+    public void display() {
+        System.out.println("Kitap ID: " + bookID);
+        System.out.println("Yazar: " + author);
+        System.out.println("Adı: " + name);
+        System.out.println("Fiyat: " + price);
+        System.out.println("Durum: " + status);
+        System.out.println("Baskı: " + edition);
+        System.out.println("Satın Alma Tarihi: " + dateOfPurchase);
+    }
+
     public void updateStatus(BookStatus newStatus) {
         this.status = newStatus;
-    }
-    public void display(){
-        System.out.println("Book: " + title + " ,Yazar: " + author.name + "Status: " +status);
     }
 }

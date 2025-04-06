@@ -10,33 +10,38 @@ public class Reader extends Person {
         this.books = books;
     }
 
-    public void borrowBook(String bookID) {
+    public void borrowBook(int bookID) {
         books.stream()
-                .filter(book -> book.getBookId().equals(bookID))
+                .filter(book -> book.getBookID() == bookID)
                 .findFirst()
                 .ifPresent(book -> {book.setStatus(BookStatus.CHECKED_OUT);
         });
     }
 
-    public void returnBook(String bookID) {
+    public void returnBook(int bookID) {
         books.stream()
-                .filter(book -> book.getBookId().equals(bookID))
+                .filter(book -> book.getBookID() == bookID)
                 .findFirst()
                 .ifPresent(book -> {book.setStatus(BookStatus.AVAILABLE);
         });
     }
 
-    public void showBook(String bookID) {
+    public void showBook(int bookID) {
         books.stream()
-                .filter(book -> book.getBookId().equals(bookID))
+                .filter(book -> book.getBookID() == bookID)
                 .findFirst()
                 .ifPresent(System.out::println);
     }
 
-    public void purchaseBook(String bookID) {
+    public void purchaseBook(int bookID) {
         books.stream()
-                .filter(book -> book.getBookId().equals(bookID))
+                .filter(book -> book.getBookID() == bookID)
                 .findFirst()
                 .ifPresent(book -> {book.setStatus(BookStatus.SOLD);});
+    }
+
+    @Override
+    public void whoYouAre() {
+        System.out.println(this.getName());
     }
 }
